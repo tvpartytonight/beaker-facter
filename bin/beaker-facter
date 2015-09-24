@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require 'rubygems' unless defined?(Gem)
+require 'beaker-facter'
+
+VERSION_STRING =
+"
+          ,'````',
+    .`',.'        `..'``',      ____
+  ,'                     `', .-'    '-.
+ ;                        ..' /)       '.         ,'``',  ,..,   ,..,
+  ',            ,.,    .'`/  (/          \     ,.'      '`    '.'    ;
+    '.,.`'.,,,.`   `''`  ;                ;  ,`                       ',
+                         |                | ;                           ;
+     beaker-facter    ___|                | `.,     ;    ,...         ,'
+                   .-'   ;                ;    `.,.' `,.'    `,.     ;
+                 .' /)    \              /                      `.,,'
+                /  (/      '.          .' '.
+               ;             '-._  _.-'     \
+               |                |)(          ;
+               |                (__)         |
+               ;                ;/           |
+                \              //            ;
+                 '.          .'/            /
+                   '-._  _.-' /.          .'
+                       )(    /  '-._  _.-'
+                      (__)  /       )(
+                       |   /       (__)
+                       |  /       _,'
+                       | /    _,'
+                       |/._,'
+"
+
+puts VERSION_STRING % [Beaker::DSL::Helpers::Hiera::Version::STRING]
+
+exit 0
