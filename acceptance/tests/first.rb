@@ -1,12 +1,5 @@
 test_name 'fact_on, fact, facter, oh my'
 
-teardown do
-  step 'un-install facter'
-  hosts.each do |host|
-    host.uninstall_package('facter')
-  end
-end
-
 PLATFORM_PATTERNS = {
   :redhat        => /fedora|el|centos/,
   :debian        => /debian|ubuntu/,
