@@ -25,12 +25,14 @@ end
 
 namespace :component do
 
-  desc 'A quick acceptance test, named because it has no pre-suites to run'
+  desc 'Component functional tests for beaker-facter.'
   task :test do
     sh('beaker',
        '--hosts', hosts,
        '--tests', tests,
        '--log-level', 'verbose',
+       '--load-path', 'acceptance/lib',
+       '--pre-suite', 'acceptance/pre-suite',
        '--keyfile', ENV['KEY'] || "#{ENV['HOME']}/.ssh/id_rsa")
   end
 
