@@ -1,7 +1,6 @@
 test_name 'fact_on, fact, facter, oh my' do
   facts_expected = [/timezone => \w\w\w/, /facterversion => \d+\.\d+\.\d+/]
   agents.each do |agent|
-    agent.add_env_var('PATH', '/opt/puppetlabs/bin:$PATH')
     on(agent, 'ln -s /opt/puppetlabs/bin/facter /opt/puppetlabs/bin/cfacter')
     step "facter should return all facts on #{agent}" do
       facts = on(agent,facter).stdout
