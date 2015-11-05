@@ -12,7 +12,7 @@ namespace :test do
 
     desc "Run spec tests with coverage"
     RSpec::Core::RakeTask.new(:coverage) do |t|
-      ENV['BEAKER_TEMPLATE_COVERAGE'] = 'y'
+      ENV['COVERAGE'] = 'y'
       t.rspec_opts = ['--color']
       t.pattern = 'spec/'
     end
@@ -53,6 +53,17 @@ namespace :test do
         )
     end
 
+    desc 'Component functional tests with coverage for beaker-facter.'
+    task :coverage do
+      ENV['COVERAGE'] = 'y'
+      sh('beaker',
+         '--type', 'foss',
+         '--load-path', 'acceptance/lib',
+         '--pre-suite', 'acceptance/pre-suite',
+         '--keyfile', ENV['KEY'] || "#{ENV['HOME']}/.ssh/id_rsa",
+         *generate_beaker_cli_flags,
+        )
+    end
   end
 
 end
